@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+{% load humanize mineral_data_extras %}
+
+{% block content %}
+<div class="bounds">
+    <div class="grid-100">
+      <a href="{% url 'views.home' %}">
+        <svg class="logo" viewBox="0 0 127.6 84.8" preserveAspectRation="xMinYMin meet">
+          <polygon points="42.7,84.8 49.6,79.4 40,62.5 51.2,43.5 51.2,43.5 25,0 0,55.6 "/>
+          <polygon class="logo--middle" points="52.9,79.5 52.9,79.5 84.8,80.1 59.7,35 43.3,62.4 "/>
+          <polygon points="127.6,61.4 127.6,61.4 110.3,13.5 110.3,13.5 70.3,48.1 70.3,48.1 88.3,80.5 95.3,81.4 95.3,81.4 "/>
+        </svg>
+        <h1 class="logo__name text-centered">Macky's Minerals</h1>
+      </a>
+      <p class="logo__text text-centered">They're not rocks!</p>
+    </div>
+    <a href="{% url 'mineral_data:list' %}"><button>View the Minerals!</button></a>
+    <ul class="custom_ul_style custom_margin_top_adj">
+        <h2 style="padding-left: 10px;">Total Minerals in Database: {{ num_of_minerals }}</h2>
+        <h2 style="padding-left: 10px;">Data Types Logged</h2>
+        {% for key in attribute_count %}
+        <li class="custom_li_style"><p class="custom_data_type_style">{{ key }}</p> {{ attribute_count|list_item_by_index:key }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
