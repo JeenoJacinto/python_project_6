@@ -1,0 +1,4 @@
+Required Libraries
+
+Django(1.8.19)
+markdown2(2.3.5)
